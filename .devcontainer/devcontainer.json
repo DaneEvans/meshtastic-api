@@ -1,9 +1,16 @@
 {
   "image": "mcr.microsoft.com/devcontainers/universal:2",
-  "postCreateCommand": "pnpm i",
-  "features": {},
-  "customizations": {},
-  "scripts": {
-    "postStart": "echo 'Dev container started!'"
+    "postCreateCommand": "pnpm i",
+    "features": {
+      "ghcr.io/devcontainers/features/postgres:1": {
+        "version": "16",
+        "postgresql-password": "postgres",
+        "postgresql-db": "meshtastic"
+      }
+    },
+    "customizations": {},
+    "containerEnv": {
+      "DATABASE_URL": "postgresql://postgres:postgres@localhost:5432/meshtastic"
+    }
   }
-}
+
